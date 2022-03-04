@@ -1,3 +1,4 @@
+package by.epam.tr;
 import by.epam.tr.datasource.Initialization;
 import by.epam.tr.view.ApplicationView;
 
