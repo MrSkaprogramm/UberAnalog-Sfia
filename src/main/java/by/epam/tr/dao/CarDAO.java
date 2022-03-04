@@ -1,3 +1,4 @@
+package by.epam.tr.dao;
 import java.util.Map;
 import by.epam.tr.beans.Car;
 import by.epam.tr.beans.Rate;
