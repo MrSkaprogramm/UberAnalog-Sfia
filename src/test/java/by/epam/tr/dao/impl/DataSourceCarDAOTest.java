@@ -1,3 +1,4 @@
+package by.epam.tr.dao.impl;
 import static org.mockito.Mockito.mock;
 import org.junit.Test;
 import by.epam.tr.datasource.DataSource;
