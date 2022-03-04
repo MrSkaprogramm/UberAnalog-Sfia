@@ -1,3 +1,4 @@
+package by.epam.tr.beans;
 import java.io.Serializable;
 
 /**
