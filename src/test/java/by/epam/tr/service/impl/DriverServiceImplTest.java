@@ -1,3 +1,4 @@
+package by.epam.tr.dao.impl;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
 import org.junit.Test;
