@@ -1,3 +1,4 @@
+package by.epam.tr.service;
 import by.epam.tr.beans.Driver;
 import by.epam.tr.beans.Rate;
 
