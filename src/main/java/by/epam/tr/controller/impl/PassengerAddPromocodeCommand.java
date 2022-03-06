@@ -7,10 +7,13 @@ import by.epam.tr.view.PassengerOptionView;
 
 /**
  * Класс - контроллер для опции добавления промокода на поездку пассажира
+ * 
  * @see PassengerOptionView#applicationMenu()
  */
 public class PassengerAddPromocodeCommand implements Command {
   /**
+   * Initializing Service Layer objects using ServiceProvider
+   * 
    * @see PassengerAddPromocodeCommand#PROMOCODE_NUM_REGEX Регулярное выражение для проверки номера
    *      промокода
    */
@@ -18,6 +21,10 @@ public class PassengerAddPromocodeCommand implements Command {
   private ServiceProvider provider = ServiceProvider.getServiceProvider();
   private PaymentService paymentService = provider.getPaymentService();
 
+  /**
+   * Checks the data and registers the passenger's promo code in the system or outputs a response
+   * about incorrect data
+   */
   public String execute(String[] requestParts) {
     String promocodeNum = requestParts[1];
     double discount = Math.random();

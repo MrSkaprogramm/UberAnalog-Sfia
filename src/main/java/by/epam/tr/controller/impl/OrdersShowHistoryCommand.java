@@ -10,34 +10,35 @@ import by.epam.tr.view.DriverOptionView;
 import by.epam.tr.view.PassengerOptionView;
 
 /**
- * Класс - контроллер для опции просмотра истории поездок (общая для ролей водитель и пассажир)
+ * Controller class for the option to view the trip history (common for the driver and passenger
+ * roles)
+ * 
  * @see DriverOptionView#applicationMenu()
  * @see PassengerOptionView#applicationMenu()
  */
 public class OrdersShowHistoryCommand implements Command {
   /**
+   * Initializing Service Layer objects using ServiceProvider
+   * 
    * @see OrdersShowHistoryCommand#logger Объект логгера
    */
   private Logger logger = LogManager.getLogger(OrdersShowHistoryCommand.class);
   private ServiceProvider provider = ServiceProvider.getServiceProvider();
   private OrderService orderService = provider.getOrderService();
 
+  /**
+   * Transmits information about the trip history to the View layer
+   */
   public String execute(String[] requestParts) {
     String response = null;
     try {
-      orderService.makeOrderReport();
-    } catch (ServiceException e) {
-      logger.warn("Failed to make a report");
-      return "Failed to make a report";
-    }
-
-    try {
       response = orderService.showOrdersHistory();
     } catch (ServiceException e) {
-      logger.warn("Failed to read a report");
+      e.getCause();
+      e.printStackTrace();
+      logger.error("Failed to read a report");
       return "Failed to read a report";
     }
     return response;
   }
-
 }

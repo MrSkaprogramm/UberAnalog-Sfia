@@ -7,18 +7,25 @@ import by.epam.tr.view.DriverOptionView;
 
 /**
  * Класс - контроллер для опции выбора авто водителем
+ * 
  * @see DriverOptionView#applicationMenu()
  */
 public class DriverSelectCarCommand implements Command {
   /**
-   * @see DriverSelectCarCommand#NAME_REGEX регулярное выражение для проверки наименований
+   * Initializing Service Layer objects using ServiceProvider
+   * 
+   * @see DriverSelectCarCommand#CAR_NAME_REGEX регулярное выражение для проверки наименований
    * @see DriverSelectCarCommand#CAR_NUM_REGEX регулярное выражение для проверки номера авто
    */
-  private static final String NAME_REGEX = "[a-zA-Z ]+";
+  private static final String CAR_NAME_REGEX = "[a-zA-Z0-9 ]+";
   private static final String CAR_NUM_REGEX = "[a-zA-Z0-9]+";
   private ServiceProvider provider = ServiceProvider.getServiceProvider();
   private DriverService driverService = provider.getDriverService();
 
+  /**
+   * The received data about the driver's car is checked and a confirmation response or incorrect
+   * data is displayed
+   */
   public String execute(String[] requestParts) {
     String carModel = requestParts[1];
     int spasePos = Integer.valueOf(requestParts[2]);
@@ -28,7 +35,7 @@ public class DriverSelectCarCommand implements Command {
     carModel = modelBuilder.toString();
 
     boolean result = false;
-    if (carModel.matches(NAME_REGEX) && carNumber.matches(CAR_NUM_REGEX)) {
+    if (carModel.matches(CAR_NAME_REGEX) && carNumber.matches(CAR_NUM_REGEX)) {
       result = driverService.selectCar(carModel.toUpperCase(), carNumber);
     } else {
       return "You entered incorrect data. Check it and try again";

@@ -7,10 +7,13 @@ import by.epam.tr.view.PassengerOptionView;
 
 /**
  * Класс - контроллер для опции добавления кредитной карты пассажира
+ * 
  * @see PassengerOptionView#applicationMenu()
  */
 public class PassengerAddCreditCardCommand implements Command {
   /**
+   * Initializing Service Layer objects using ServiceProvider
+   * 
    * @see PassengerAddCreditCardCommand#CARD_NUM_REGEX регулярное выражение для проверки номера
    *      кредитной карты
    */
@@ -18,6 +21,10 @@ public class PassengerAddCreditCardCommand implements Command {
   private ServiceProvider provider = ServiceProvider.getServiceProvider();
   private PaymentService paymentService = provider.getPaymentService();
 
+  /**
+   * Checks the data and registers the passenger's credit card in the system or outputs a response
+   * about incorrect data
+   */
   public String execute(String[] requestParts) {
     String creditCardNum = requestParts[1];
     String expiringDate = requestParts[2];
@@ -25,10 +32,10 @@ public class PassengerAddCreditCardCommand implements Command {
     boolean result = false;
     if (creditCardNum.matches(CARD_NUM_REGEX)) {
       result = paymentService.addCreditCard(Integer.valueOf(creditCardNum), expiringDate);
-    }else {
+    } else {
       return "You entered incorrect data. Check it and try again";
     }
-    
+
     if (result) {
       return "You have successfully added a credit card";
     } else {
