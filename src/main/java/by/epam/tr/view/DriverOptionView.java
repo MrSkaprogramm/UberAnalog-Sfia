@@ -5,18 +5,17 @@ import org.apache.logging.log4j.Logger;
 import by.epam.tr.controller.Controller;
 
 /**
- * Класс слоя View роли водителя
+ * Class of the Driver Role View layer
  */
 public class DriverOptionView extends ApplicationView {
   /**
-   * @see DriverOptionView#CHOISE_REGEXP Регулярное выражение для проверки ввода пользователя при
-   *      выборе
-   * @see DriverOptionView#sc Сканнер ввода пользователем данных в консоль
-   * @see DriverOptionView#controller объект Controller для связи со слоем Controller
-   * @see DriverOptionView#request переменная, содержащая запрос пользователя и веедённые данные для
-   *      него
-   * @see DriverOptionView#menuAnswer переменная, содержащая ответ слоя Controller на запрос
-   *      пользователя
+   * @see DriverOptionView#CHOISE_REGEXP Regular expression to check user input when selecting
+   * @see DriverOptionView#sc Scanner for user input to the console
+   * @see DriverOptionView#controller Controller object to communicate with the Controller layer
+   * @see DriverOptionView#request variable containing the user's request and the received data for
+   *      him
+   * @see DriverOptionView#menuAnswer variable containing the Controller layer's response to the
+   *      request user
    */
   private static final String CHOISE_REGEXP = "[0-9]+";
   private Scanner sc = super.getSc();
@@ -26,7 +25,7 @@ public class DriverOptionView extends ApplicationView {
   private Logger logger = super.getLogger();
 
   /**
-   * Консольное менб регистрации водителя
+   * Console driver registration menb
    */
   @Override
   public void registrationMenu() {
@@ -49,17 +48,15 @@ public class DriverOptionView extends ApplicationView {
   }
 
   /**
-   * Консольное меню опций водителя
+   * Console menu of driver options
    */
   @Override
   public void applicationMenu() {
     logger.info("AirTaxi" + "\n" + "Press 1 to get on the line" + "\n" + "Press 2 to select car"
-            + "\n" + "Press 3 to show order history" + "\n" + "Press any other number to exit");
+        + "\n" + "Press 3 to show order history" + "\n" + "Press any other number to exit");
     String choise = sc.nextLine();
 
-    if (!choise.matches(CHOISE_REGEXP)) {
-      applicationMenu();
-    } else if (Integer.valueOf(choise) == 1) {
+    if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 1) {
       request = "driverGetOnLine";
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
@@ -72,19 +69,19 @@ public class DriverOptionView extends ApplicationView {
         String takeOrder = sc.nextLine();
         if (!takeOrder.matches(CHOISE_REGEXP)) {
           applicationMenu();
-          }else if (Integer.valueOf(choise) == 1) {
-            request = "driverBeginTrip";
-            menuAnswer = controller.doAction(request);
-            logger.info(menuAnswer);
-            applicationMenu();
-          } else if (Integer.valueOf(choise) == 2) {
-            request = "ordersShowHistory";
-            menuAnswer = controller.doAction(request);
-            logger.info(menuAnswer);
-            applicationMenu();
-          }
+        } else if (Integer.valueOf(choise) == 1) {
+          request = "driverBeginTrip";
+          menuAnswer = controller.doAction(request);
+          logger.info(menuAnswer);
+          applicationMenu();
+        } else if (Integer.valueOf(choise) == 2) {
+          request = "ordersShowHistory";
+          menuAnswer = controller.doAction(request);
+          logger.info(menuAnswer);
+          applicationMenu();
         }
-    } else if (Integer.valueOf(choise) == 2) {
+      }
+    } else if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 2) {
       logger.info("Enter your car's model:");
       String carModel = sc.nextLine();
       carModel = carModel.trim();
@@ -97,17 +94,18 @@ public class DriverOptionView extends ApplicationView {
         }
       }
       carModel = carModel.replaceAll(" ", "");
-      System.out.println("carModel " + carModel + " " + spacePos);
       logger.info("Enter your car's number:");
       String carNumber = sc.nextLine();
       request = "driverSelectCar" + " " + carModel + " " + spacePos + " " + carNumber;
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
       applicationMenu();
-    } else if (Integer.valueOf(choise) == 3) {
+    } else if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 3) {
       request = "ordersShowHistory";
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
+      applicationMenu();
+    } else if (!choise.matches(CHOISE_REGEXP)) {
       applicationMenu();
     } else {
       logger.info("Have a nice day!");

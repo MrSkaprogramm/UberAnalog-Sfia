@@ -5,18 +5,17 @@ import org.apache.logging.log4j.Logger;
 import by.epam.tr.controller.Controller;
 
 /**
- * Класс слоя View роли пассажира
+ * Class of the Passenger Role View layer
  */
 public class PassengerOptionView extends ApplicationView {
   /**
-   * @see PassengerOptionView#CHOISE_REGEXP Регулярное выражение для проверки ввода пользователя при
-   *      выборе
-   * @see PassengerOptionView#sc Сканнер ввода пользователем данных в консоль
-   * @see PassengerOptionView#controller объект Controller для связи со слоем Controller
-   * @see PassengerOptionView#request переменная, содержащая запрос пользователя и веедённые данные
-   *      для него
-   * @see PassengerOptionView#menuAnswer переменная, содержащая ответ слоя Controller на запрос
-   *      пользователя
+   * @see PassengerOptionView#CHOISE_REGEXP Regular expression to check user input when selecting
+   * @see PassengerOptionView#sc Scanner for user input to the console
+   * @see PassengerOptionView#controller Controller object to communicate with the Controller layer
+   * @see PassengerOptionView#request variable containing the user's request and the received data
+   *      for him
+   * @see PassengerOptionView#menuAnswer variable containing the Controller layer's response to the
+   *      request user
    */
   private static final String CHOISE_REGEXP = "[0-9]+";
   private Scanner sc = super.getSc();
@@ -26,7 +25,7 @@ public class PassengerOptionView extends ApplicationView {
   private Logger logger = super.getLogger();
 
   /**
-   * Консольное меню регистрации пассажира
+   * Console menu for passenger registration
    */
   @Override
   public void registrationMenu() {
@@ -48,7 +47,7 @@ public class PassengerOptionView extends ApplicationView {
   }
 
   /**
-   * Консольное меню опций пассажира
+   * Console menu of passenger options
    */
   @Override
   public void applicationMenu() {
@@ -58,9 +57,7 @@ public class PassengerOptionView extends ApplicationView {
             + "Press 5 to show order history" + "\n" + "Press any other number to exit");
     String choise = sc.nextLine();
 
-    if (!choise.matches(CHOISE_REGEXP)) {
-      applicationMenu();
-    } else if (Integer.valueOf(choise) == 1) {
+    if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 1) {
       logger.info("Enter your destination address:");
       String destinationAddress = sc.nextLine();
       request = "passengerSearchCar" + " " + destinationAddress;
@@ -97,7 +94,7 @@ public class PassengerOptionView extends ApplicationView {
           applicationMenu();
         }
       }
-    } else if (Integer.valueOf(choise) == 2) {
+    } else if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 2) {
       logger.info("Select your payment type" + "\n" + "Press 1 to choose cash" + "\n"
           + "Press 2 to choose credit card");
       String paymentType = null;
@@ -114,7 +111,7 @@ public class PassengerOptionView extends ApplicationView {
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
       applicationMenu();
-    } else if (Integer.valueOf(choise) == 3) {
+    } else if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 3) {
       logger.info("Enter your credit card's number:");
       String cardNum = sc.nextLine();
       logger.info("Enter your credit card's expiring date:");
@@ -123,17 +120,19 @@ public class PassengerOptionView extends ApplicationView {
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
       applicationMenu();
-    } else if (Integer.valueOf(choise) == 4) {
+    } else if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 4) {
       logger.info("Enter your promocode's number:");
       String promocodeNum = sc.nextLine();
       request = "passengerAddPromocode" + " " + promocodeNum;
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
       applicationMenu();
-    } else if (Integer.valueOf(choise) == 5) {
+    } else if (choise.matches(CHOISE_REGEXP) && Integer.valueOf(choise) == 5) {
       request = "ordersShowHistory";
       menuAnswer = controller.doAction(request);
       logger.info(menuAnswer);
+      applicationMenu();
+    } else if (!choise.matches(CHOISE_REGEXP)) {
       applicationMenu();
     } else {
       logger.info("Have a nice day!");
