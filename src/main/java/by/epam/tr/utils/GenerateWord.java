@@ -1,13 +1,14 @@
 package by.epam.tr.utils;
 
 /**
- * Класс генерации рандомного слова
+ * Random word generation class
  */
 public class GenerateWord {
 
   /**
-   * Генерирует случайное слово
-   * @return Возвращает это слово в виде строки
+   * Generates a random word
+   * 
+   * @return Returns this word as a string
    */
   public String generateRandomWord() {
     String letters = "abcdefghijklmnopqrstuvwxyz";
