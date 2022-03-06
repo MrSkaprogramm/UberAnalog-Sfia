@@ -1,4 +1,5 @@
 package by.epam.tr.dao.impl;
+
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -7,36 +8,38 @@ import by.epam.tr.dao.CarDAO;
 import by.epam.tr.datasource.DataSource;
 
 /**
- * Класс реализации интерфейса слоя DAO
- * @see CarDAO
+ * Implementation class of the DAO layer interface * @see CarDAO
  */
 public class DataSourceCarDAO implements CarDAO {
   /**
-   * @param dataSource объект класса DataSource
+   * @param dataSource object of the DataSource class
+   * @see DataSourceCarDAO#suitableCarTaxis Cars allowed for Taxi rides
    */
   private DataSource dataSource = new DataSource();
   private Map<String, Rate> suitableCarTaxis = dataSource.getSuitableCarsTaxis();
 
   /**
-   * @return Возвращает список доступных машин {@link DataSource#getSuitableCarsTaxis()} для
-   *         вождения в такси
+   * @return Returns a list of available cars {@link DataSource#getSuitableCarsTaxis()} for driving
+   *         in a taxi
    */
   public Map<String, Rate> getCarsSuitableTaxis() {
     return dataSource.getSuitableCarsTaxis();
   }
 
   /**
-   * @param carModel Модель машины
-   * @return Возвращает boolean возможного наличия модели автомобиля в списке доступных машин
-   *         {@link DataSource#getSuitableCarsTaxis()}
+   * Searches for a car model in the list of available cars
+   * 
+   * @param CarModel Car Model
+   * @return Returns the boolean of the possible presence of the car model in the list of available
+   *         cars {@link DataSource#getSuitableCarsTaxis()}
    */
   public boolean checkCar(String carModel) {
     return suitableCarTaxis.containsKey(carModel);
   }
 
   /**
-   * @param carModel Модель машин
-   * @return Возвращает Rate модели автомобиля из списка доступных машин
+   * @param CarModel Car Model
+   * @return Returns the Rate of the car model from the list of available cars
    *         {@link DataSource#getSuitableCarsTaxis()}
    */
   public Rate getCarRate(String carModel) {
@@ -44,7 +47,7 @@ public class DataSourceCarDAO implements CarDAO {
   }
 
   /**
-   * @return Возвращает случайную модель автомобиля из списка доступных машин
+   * @return Returns a random car model from the list of available cars
    *         {@link DataSource#getSuitableCarsTaxis()}
    */
   public String getRandomCarModel() {

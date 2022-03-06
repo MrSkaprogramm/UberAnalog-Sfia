@@ -7,62 +7,58 @@ import by.epam.tr.dao.DriverDAO;
 import by.epam.tr.datasource.DataSource;
 
 /**
- * Класс реализации интерфейса слоя DAO
- * @see DriverDAO
+ * Implementation class of the DAO layer interface * @see DriverDAO
  */
 public class DataSourceDriverDAO implements DriverDAO {
   /**
-   * @param dataSource объект класса DataSource
+   * @param dataSource object of the DataSource class
    */
   private DataSource dataSource = new DataSource();
   private Set<Driver> drivers = dataSource.getDrivers();
 
   /**
-   * Добавляет водителя в список водителей
-   * @param newDriver объект класса Driver {@link DataSource#getDrivers()}
+   * Adds a driver to the list of drivers *
+   * 
+   * @param newDriver новый водитель {@link DataSource#getDrivers()}
    */
   public void addDriver(Driver newDriver) {
     drivers.add(newDriver);
-	}
+  }
 
-    /**
-     * @return Возвращает список водителей {@link DataSource#getDrivers()}
-     */
-    public Set<Driver> getDrivers() {
-      return drivers;
-    }
+  /**
+   * @return Returns the first driver in the list {@link DataSource#getDrivers()}
+   */
+  public Driver getNearestDriver() {
+    return drivers.iterator().next();
+  }
 
-    /**
-     * @return Возвращает первого водителя в списке {@link DataSource#getDrivers()}
-     */
-    public Driver getNearestDriver() {
-      return drivers.iterator().next();
-    }
+  /**
+   * Clears the list of drivers
+   * 
+   * @return Returns boolean confirmation of the action {@link DataSource#getDrivers()}
+   */
+  public boolean clearListOfDrivers() {
+    drivers.clear();
+    return true;
+  }
 
-    /**
-     * @return Очищает список водителей {@link DataSource#getDrivers()}
-     */
-    public boolean clearListOfDrivers() {
-      drivers.clear();
-      return true;
-    }
+  /**
+   * @param drivers Updated list of drivers
+   * @return Uploads the updated list of drivers to the database {@link DataSource#getDrivers()}
+   */
+  public boolean updateDrivers(Set<Driver> allDrivers) {
+    drivers.addAll(allDrivers);
+    return true;
+  }
 
-    /**
-     * @param drivers Обновлённый список водителей
-     * @return Загружает обновлённый список водителей в базу данных {@link DataSource#getDrivers()}
-     */
-    public boolean setupDriversByRate(Set<Driver> allDrivers) {
-      drivers.addAll(allDrivers);
-      return true;
-    }
-
-    /**
-     * @return Возвращает новый объект списка водителей из базы данных
-     *         {@link DataSource#getDrivers()}
-     */
-    public Set<Driver> getDriversOnTheLine() {
-      Set<Driver> drivers = new HashSet<Driver>();
-      drivers.addAll(dataSource.getDrivers());
-      return drivers;
-    }
+  /**
+   * Passes a copy of the driver list to the Service layer
+   * 
+   * @return Returns a new driver list object {@link DataSource#getDrivers()}
+   */
+  public Set<Driver> getDriversOnTheLine() {
+    Set<Driver> drivers = new HashSet<Driver>();
+    drivers.addAll(dataSource.getDrivers());
+    return drivers;
+  }
 }
