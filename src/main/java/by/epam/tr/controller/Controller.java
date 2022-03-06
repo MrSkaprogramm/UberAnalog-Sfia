@@ -1,8 +1,8 @@
 package by.epam.tr.controller;
 
 /**
- * Интерфейс слоя Controller
+ * Interface of the Controller layer
  */
 public interface Controller {
-	String doAction(String request);
+  String doAction(String request);
 }
