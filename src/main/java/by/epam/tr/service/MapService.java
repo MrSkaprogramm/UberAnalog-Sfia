@@ -1,29 +1,29 @@
 package by.epam.tr.service;
 
-import by.epam.tr.beans.NavigationMap;
+import by.epam.tr.dao.DAOException;
 
 /**
- * Интерфейс слоя Service для bean
- * @see NavigationMap
+ * Service layer interface for bean * @see NavigationMap
  */
 public interface MapService {
   /**
-   * Находит случайную улицу
+   * Finds a random street
    */
-  public String defineLocation();
-	
-  /**
-   * Проверяет корректность названия улицы в соответствии со списком улиц города
-   */
-  public boolean checkLocation(String street);
+  public String defineLocation() throws DAOException;
 
   /**
-   * Возвражает значение расстояния до выбранной улицы
+   * Checks the correctness of the street name in accordance with the list of streets of the city
    */
-  public double locationDistance(String street);
+  public boolean checkLocation(String street) throws DAOException;
 
   /**
-   * Вычисляет путь между двумя точками маршрута
+   * Determines the distance from the city center to the selected point
    */
-  public double calculateTripDistance(String passengerLocation, String deliveryAddress);
+  public double locationDistance(String street) throws DAOException;
+
+  /**
+   * Calculates the path between two route points
+   */
+  public double calculateTripDistance(String passengerLocation, String deliveryAddress)
+      throws DAOException;
 }

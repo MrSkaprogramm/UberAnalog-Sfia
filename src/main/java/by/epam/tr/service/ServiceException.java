@@ -1,7 +1,7 @@
 package by.epam.tr.service;
 
 /**
- * Класс - исключение, объединяющий все исключения слоя Service
+ * Exception class that combines all exceptions of the Service layer
  */
 public class ServiceException extends Exception {
   private static final long serialVersionUID = -1276822170861281157L;

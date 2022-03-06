@@ -1,25 +1,23 @@
 package by.epam.tr.service;
 
 import by.epam.tr.beans.Order;
-import by.epam.tr.beans.Payment;
 
 /**
- * Интерфейс слоя Service для bean
- * @see Payment
+ * Service layer interface for bean * @see Payment
  */
 public interface PaymentService {
   /**
-   * Выполняет платёж пассажира за проезд или получение денег водителем в зависимости от роли
+   * Performs passenger payment for travel or receipt of money by the driver, depending on the role
    */
   public <T> String makeTransaction(Order order, T role);
 
   /**
-   * Добавляет кредитную карту
+   * Adds a credit card
    */
   public boolean addCreditCard(int creditCardNum, String expiringDate);
 
   /**
-   * Добавляет промокод
+   * Adds a promo code
    */
   public boolean addPromocode(String promocodeNum, double discount);
 }

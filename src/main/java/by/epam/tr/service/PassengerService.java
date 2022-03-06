@@ -1,34 +1,34 @@
 package by.epam.tr.service;
 
 import by.epam.tr.beans.Passenger;
+import by.epam.tr.dao.DAOException;
 
 /**
- * Интерфейс слоя Service для bean
- * @see Passenger
+ * Service layer interface for bean * @see Passenger
  */
 public interface PassengerService {
   /**
-   * Проверяет на соответствие имя и фамилию пассажира
+   * Checks for compliance with the passenger's first and last name
    */
   public boolean validate(String name, String surname);
 
   /**
-   * Регистрирует нового пассажира
+   * Registers a new passenger
    */
-  public boolean register(String name, String surname);
+  public boolean register(String name, String surname) throws DAOException;
 
   /**
-   * Генерирует несколько пассажиров рядом с водителем
+   * Generates multiple passengers next to the driver
    */
-    public boolean generatePassengers();
+  public boolean generatePassengers() throws DAOException;
 
   /**
-   * Установка вида платёжного средства пассажиром
+   * Setting the type of payment means by the passenger
    */
-    public String selectPaymentType(String type);
+  public String selectPaymentType(String type);
 
   /**
-   * Выбирает первого в списке пассажира рядом с водителем
+   * Selects the first passenger in the list next to the driver
    */
-    public Passenger choosePassenger();
+  public Passenger choosePassenger();
 }

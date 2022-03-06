@@ -1,40 +1,41 @@
 package by.epam.tr.service;
+
 import by.epam.tr.beans.Driver;
 import by.epam.tr.beans.Rate;
+import by.epam.tr.dao.DAOException;
 
 /**
- * Интерфейс слоя Service для bean
- * @see Driver
+ * Service layer interface for bean * @see Driver
  */
 public interface DriverService {
   /**
-   * Возвращает boolean - значение правильности ввода данных водителя
+   * Checking the correctness of the driver's data entry
    */
   public boolean validate(String name, String surname, String legalEntityName);
 
   /**
-   * Возвращает ответ в виде boolean - зачения о регистрации нового водителя
+   * Registers a new driver
    */
-  public boolean register(String name, String surname, String legalEntityName);
+  public boolean register(String name, String surname, String legalEntityName) throws DAOException;
 
   /**
-   * Возвращает ответ в виде boolean - зачения о выборе автомобиля водителем
+   * Driver's choice of car
    */
   public boolean selectCar(String carModel, String carNumber);
 
   /**
-   * Возвращает ответ в виде boolean - зачения
+   * Generates multiple drivers next to the passenger
    */
-  public boolean generateDrivers();
+  public boolean generateDrivers() throws DAOException;
 
   /**
-   * Выбирает первого в списке водителя рядом с пассажиром
+   * Selects the first driver in the data source list next to the passenger
    */
   public Driver chooseDriver();
 
   /**
-   * Удаляет всех водителей в списке, не соответствующих выбранному пассажиром тарифу и записывает
-   * соответствующих водителей в список в базе данных
+   * Deletes all drivers in the list that do not match the fare selected by the passenger and
+   * records relevant drivers are listed in the data source
    */
   public boolean choiseDriverByRate(Rate rate);
 }

@@ -1,24 +1,19 @@
 package by.epam.tr.service;
 
 import by.epam.tr.beans.Order;
+import by.epam.tr.dao.DAOException;
 
 /**
- * Интерфейс слоя Service для bean
- * @see Order
+ * Service layer interface for bean * @see Order
  */
 public interface OrderService {
   /**
-   * Начало поездки, создание заказа и помещение его в список заказов
+   * Starting a trip, creating an order and placing it in a data source
    */
-  public <T> Order startTrip(T role);
+  public <T> Order startTrip(T role) throws ServiceException, DAOException;
 
   /**
-   * Запись всех заказов из списка выполненных заказов в файл
-   */
-  public boolean makeOrderReport() throws ServiceException;
-
-  /**
-   * Чтение содержимого файла с выполненными заказами
+   * Reading the contents of a file with completed orders
    */
   public String showOrdersHistory() throws ServiceException;
 }

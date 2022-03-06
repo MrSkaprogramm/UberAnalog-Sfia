@@ -7,40 +7,40 @@ import by.epam.tr.service.impl.PassengerServiceImpl;
 import by.epam.tr.service.impl.PaymentServiceImpl;
 
 /**
- * Класс - провайдер слоя Service
+ * Service Layer Provider class
  */
 public class ServiceProvider {
   private static final ServiceProvider serviceProvider = new ServiceProvider();
-	
-	private final PassengerService passengerService = new PassengerServiceImpl();
-	private final MapService mapService = new MapServiceImpl();
-	private final DriverService driverService = new DriverServiceImpl();
-	private final OrderService orderService = new OrderServiceImpl();
-	private final PaymentService paymentService = new PaymentServiceImpl();
-	
-	public ServiceProvider() {}
 
-	public PassengerService getPassengerService() {
-		return passengerService;
-	}
+  private final PassengerService passengerService = new PassengerServiceImpl();
+  private final MapService mapService = new MapServiceImpl();
+  private final DriverService driverService = new DriverServiceImpl();
+  private final OrderService orderService = new OrderServiceImpl();
+  private final PaymentService paymentService = new PaymentServiceImpl();
 
-	public MapService getMapService() {
-		return mapService;
-	}
+  public ServiceProvider() {}
 
-	public DriverService getDriverService() {
-		return driverService;
-	}
+  public PassengerService getPassengerService() {
+    return passengerService;
+  }
 
-	public OrderService getOrderService() {
-		return orderService;
-	}
+  public MapService getMapService() {
+    return mapService;
+  }
 
-	public PaymentService getPaymentService() {
-		return paymentService;
-	}
+  public DriverService getDriverService() {
+    return driverService;
+  }
 
-    public static ServiceProvider getServiceProvider() {
-      return serviceProvider;
-    }
+  public OrderService getOrderService() {
+    return orderService;
+  }
+
+  public PaymentService getPaymentService() {
+    return paymentService;
+  }
+
+  public static ServiceProvider getServiceProvider() {
+    return serviceProvider;
+  }
 }
