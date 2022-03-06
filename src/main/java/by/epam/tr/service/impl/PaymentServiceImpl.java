@@ -13,21 +13,21 @@ import by.epam.tr.dao.PassengerDAO;
 import by.epam.tr.service.PaymentService;
 
 /**
- * Класс реализации интерфейса слоя Service
- * @see PaymentService
+ * Implementation class of the Service layer interface * @see PaymentService
  */
 public class PaymentServiceImpl implements PaymentService {
   /**
-   * Инициализация объектов слоя DAO с помощью DAOProvider
+   * Initialization of DAO layer objects using DAOProvider
    */
   private final DAOProvider provider = DAOProvider.getDaoProvider();
   private PassengerDAO passengerDAO = provider.getPassengerDAO();
 
   /**
-   * Выполняет платёж пассажира за проезд или получение денег водителем в зависимости от роли
-   * @param order Заказ, который нужно оплатить или получить оплату
-   * @param role роль пользователя
-   * @return Возвращает строку статуса выполнения операции
+   * Performs passenger payment for travel or receipt of money by the driver, depending on the role
+   * 
+   * @param order Order to be paid or receive payment
+   * @param role user role
+   * @return Returns the operation status string
    */
   public <T> String makeTransaction(Order order, T role) {
     Driver orderDriver = order.getDriver();
@@ -66,9 +66,10 @@ public class PaymentServiceImpl implements PaymentService {
   }
 
   /**
-   * Добавляет кредитную карту
-   * @param creditCardNum Номер кредитной карты
-   * @param expiringDate дата действия кредитной карты
+   * Adds a credit card
+   * 
+   * @param creditCardNum Credit Card Number
+   * @param expiringDate credit card expiration date
    */
   public boolean addCreditCard(int creditCardNum, String expiringDate) {
     Passenger passenger = passengerDAO.getNearestPassenger();
@@ -79,9 +80,10 @@ public class PaymentServiceImpl implements PaymentService {
   }
 
   /**
-   * Добавляет промокод
-   * @param promocodeNum Номер промокода
-   * @param discount скидка промокода
+   * Adds a promo code
+   * 
+   * @param promocodeNum Promo Code number
+   * @param discount promo code discount
    */
   public boolean addPromocode(String promocodeNum, double discount) {
     Passenger passenger = passengerDAO.getNearestPassenger();

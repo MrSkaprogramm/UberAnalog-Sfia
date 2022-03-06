@@ -1,55 +1,62 @@
 package by.epam.tr.service.impl;
 
+import by.epam.tr.dao.DAOException;
 import by.epam.tr.dao.DAOProvider;
 import by.epam.tr.dao.MapDAO;
 import by.epam.tr.service.MapService;
 
 /**
- * Класс реализации интерфейса слоя Service
- * @see MapService
+ * Implementation class of the Service layer interface * @see MapService
  */
 public class MapServiceImpl implements MapService {
   /**
-   * Инициализация объектов слоя DAO с помощью DAOProvider
+   * Initialization of DAO layer objects using DAOProvider
    */
   private final DAOProvider provider = DAOProvider.getDaoProvider();
   private MapDAO mapDAO = provider.getMapDAO();
 
-    /**
-     * Проверяет корректность названия улицы в соответствии со списком улиц города
-     * @param street Название улицы
-     * @return Возвращает boolean - значение
-     */
-    public boolean checkLocation(String street) {
-      return mapDAO.checkLocation(street);
-	}
-    // 3 для теста
+  /**
+   * Checks the correctness of the street name in accordance with the list of streets of the city
+   *
+   * @param street Street name
+   * @return Returns a boolean value
+   * @throws DAOException
+   */
+  public boolean checkLocation(String street) throws DAOException {
+    return mapDAO.checkLocation(street);
+  }
 
-    /**
-     * Находит случайную улицу
-     * @return Возвращает строку с названием улицы
-     */
-    public String defineLocation() {
-      return mapDAO.getRandomLocation();
-    }
+  /**
+   * Finds a random street
+   * 
+   * @return Returns a string with the street name
+   * @throws DAOException
+   */
+  public String defineLocation() throws DAOException {
+    return mapDAO.getRandomLocation();
+  }
 
-    /**
-     * @param street Название улицы
-     * @return Возвражает значение расстояния до выбранной улицы
-     */
-    public double locationDistance(String street) {
-      return mapDAO.getLocationDistance(street);
-    }
+  /**
+   * Determines the distance from the city center to the selected point
+   *
+   * @param street Street name
+   * @return Returns the value of the distance to the selected street
+   * @throws DAOException
+   */
+  public double locationDistance(String street) throws DAOException {
+    return mapDAO.getLocationDistance(street);
+  }
 
-    // 4 для теста
-    /**
-     * Вычисляет путь между двумя точками маршрута
-     * @param passengerLocation местоположение пассажира
-     * @param deliveryAddress местоположение точки прибытия
-     * @return Возвращает значение расстояния
-     */
-    public double calculateTripDistance(String passengerLocation, String deliveryAddress) {
-      return locationDistance(passengerLocation) + locationDistance(deliveryAddress);
-    }
-    // 5 для теста
+  /**
+   * Calculates the path between two route points
+   *
+   * @param passengerLocation passenger location
+   * @param DeliveryAddress location of the arrival point
+   * @return Returns the distance value
+   * @throws DAOException
+   */
+  public double calculateTripDistance(String passengerLocation, String deliveryAddress)
+      throws DAOException {
+    return locationDistance(passengerLocation) + locationDistance(deliveryAddress);
+  }
 }
