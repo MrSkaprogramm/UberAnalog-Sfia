@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Класс, описываюзий промокоды на поездку
+ * Class describing the promo codes for the trip
  */
-public class Promocode implements Serializable{
+public class Promocode implements Serializable {
   private static final long serialVersionUID = 3681718065019909653L;
   private String promocodeNum;
   private double discount;
-	
+
   public Promocode(String promocodeNum, double discount) {
     this.promocodeNum = promocodeNum;
     this.discount = discount;

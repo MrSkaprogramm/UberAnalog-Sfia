@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Класс, описывающий обе роли водителя и пассажира
+ * A class describing both the roles of driver and passenger
  */
-public class User implements Serializable{
+public class User implements Serializable {
   private static final long serialVersionUID = -1818397082467608155L;
   private String name;
   private String surname;

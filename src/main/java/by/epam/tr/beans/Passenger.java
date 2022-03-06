@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Класс, описывающий пассажира
+ * Class describing the passenger
  */
 public class Passenger extends User implements Serializable, Comparable<Passenger> {
   private static final long serialVersionUID = -8345915539780328557L;

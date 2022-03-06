@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Класс, описывающий навигационную карту в приложении
+ * A class describing the navigation map in the application
  */
-public class NavigationMap implements Serializable{
+public class NavigationMap implements Serializable {
   private static final long serialVersionUID = -8145835483018798695L;
   private String deliveryAddress;
   private String driverLocation;
   private String passengerLocation;
-  
+
   public NavigationMap() {}
 
   public String getDeliveryAddress() {

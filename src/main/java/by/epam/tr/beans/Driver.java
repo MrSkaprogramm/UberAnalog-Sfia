@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Класс, описывающий водителя
+ * Class describing the driver
  */
-public class Driver extends User implements Serializable{
+public class Driver extends User implements Serializable {
   private static final long serialVersionUID = 7372189831846491853L;
   private String legalEntityName;
   private Car car;
