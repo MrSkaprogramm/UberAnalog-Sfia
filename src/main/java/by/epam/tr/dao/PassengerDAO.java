@@ -3,22 +3,21 @@ package by.epam.tr.dao;
 import by.epam.tr.beans.Passenger;
 
 /**
- * Интерфейс слоя DAO для bean
- * @see Passenger
+ * DAO layer interface for bean * @see Passenger
  */
 public interface PassengerDAO {
   /**
-   * Добавляет пассажира в список пассажиров
+   * Adds a passenger to the passenger list
    */
   public void addPassenger(Passenger newPassenger);
 
   /**
-   * Возвращает первого пассажира в списке
+   * Returns the first passenger in the list
    */
-    public Passenger getNearestPassenger();
+  public Passenger getNearestPassenger();
 
   /**
-   * Очищает список пассажиров
+   * Clears the passenger list
    */
-    public boolean clearListOfPassengers();
+  public boolean clearListOfPassengers();
 }

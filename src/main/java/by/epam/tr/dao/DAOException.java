@@ -1,7 +1,7 @@
 package by.epam.tr.dao;
 
 /**
- * Класс - исключение, объединяющий все исключения слоя DAO
+ * Exception class that combines all exceptions of the DAO layer
  */
 public class DAOException extends Exception {
   private static final long serialVersionUID = 1031847059109199548L;

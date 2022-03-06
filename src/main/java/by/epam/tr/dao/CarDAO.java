@@ -1,32 +1,30 @@
 package by.epam.tr.dao;
+
 import java.util.Map;
-import by.epam.tr.beans.Car;
 import by.epam.tr.beans.Rate;
 import by.epam.tr.datasource.DataSource;
 
 /**
- * Интерфейс слоя DAO для bean
- * @see Car
+ * DAO layer interface for bean * @see Car
  */
 public interface CarDAO {
   /**
-   * Возвращает список доступных машин {@link DataSource#getSuitableCarsTaxis()} для вождения в
-   * такси
+   * Returns a list of available cars {@link DataSource#getSuitableCarsTaxis()} for driving in taxi
    */
   public Map<String, Rate> getCarsSuitableTaxis();
 
   /**
-   * Возвращает boolean возможного наличия модели автомобиля в списке доступных машин
+   * Returns the boolean of the possible presence of the car model in the list of available cars
    */
   public boolean checkCar(String carModel);
 
   /**
-   * Возвращает Rate модели автомобиля из списка доступных машин
+   * Returns the Rate of the car model from the list of available cars
    */
   public Rate getCarRate(String carModel);
 
   /**
-   * Возвращает случайную модель автомобиля из списка доступных машин
+   * Returns a random car model from the list of available cars
    */
   public String getRandomCarModel();
 }

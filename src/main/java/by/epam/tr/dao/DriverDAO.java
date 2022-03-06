@@ -4,37 +4,31 @@ import java.util.Set;
 import by.epam.tr.beans.Driver;
 
 /**
- * Интерфейс слоя DAO для bean
- * @see Driver
+ * DAO layer interface for bean * @see Driver
  */
 public interface DriverDAO {
   /**
-   * Добавляет водителя в список водителей
+   * Adds a driver to the list of drivers
    */
   public void addDriver(Driver newDriver);
 
   /**
-   * Загружает обновлённый список водителей в базу данных
+   * Uploads the updated list of drivers to the database
    */
-  public boolean setupDriversByRate(Set<Driver> drivers);
+  public boolean updateDrivers(Set<Driver> drivers);
 
   /**
-   * Возвращает список водителей
-   */
-  public Set<Driver> getDrivers();
-
-  /**
-   * Возвращает новый объект списка водителей из базы данных
+   * Passes a copy of the driver list to the Service layer
    */
   public Set<Driver> getDriversOnTheLine();
 
   /**
-   * Возвращает первого водителя в списке
+   * Returns the first driver in the list
    */
   public Driver getNearestDriver();
 
   /**
-   * Очищает список водителей
+   * Clears the list of drivers
    */
   public boolean clearListOfDrivers();
 }

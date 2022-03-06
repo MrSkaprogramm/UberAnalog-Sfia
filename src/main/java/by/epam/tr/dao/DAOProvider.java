@@ -7,61 +7,61 @@ import by.epam.tr.dao.impl.DataSourceOrderDAO;
 import by.epam.tr.dao.impl.DataSourcePassengerDAO;
 
 /**
- * Класс - провайдер слоя DAO
+ * Class provider of the DAO layer
  */
 public class DAOProvider {
 
   private static final DAOProvider daoProvider = new DAOProvider();
-	
+
   private PassengerDAO passengerDAO = new DataSourcePassengerDAO();
   private DriverDAO driverDAO = new DataSourceDriverDAO();
   private MapDAO mapDAO = new DataSourceMapDAO();
   private OrderDAO orderDAO = new DataSourceOrderDAO();
   private CarDAO carDAO = new DataSourceCarDAO();
-	
-	public DAOProvider() {}
-	
-    public static DAOProvider getDaoProvider() {
-      return daoProvider;
-    }
 
-    public PassengerDAO getPassengerDAO() {
-		return passengerDAO;
-	}
+  public DAOProvider() {}
 
-	public void setPassengerDAO(PassengerDAO passengerDAO) {
-		this.passengerDAO = passengerDAO;
-	}
+  public static DAOProvider getDaoProvider() {
+    return daoProvider;
+  }
 
-	public DriverDAO getDriverDAO() {
-		return driverDAO;
-	}
+  public PassengerDAO getPassengerDAO() {
+    return passengerDAO;
+  }
 
-	public void setDriverDAO(DriverDAO driverDAO) {
-		this.driverDAO = driverDAO;
-	}
+  public void setPassengerDAO(PassengerDAO passengerDAO) {
+    this.passengerDAO = passengerDAO;
+  }
 
-	public MapDAO getMapDAO() {
-		return mapDAO;
-	}
+  public DriverDAO getDriverDAO() {
+    return driverDAO;
+  }
 
-	public void setMapDAO(MapDAO mapDAO) {
-		this.mapDAO = mapDAO;
-      }
+  public void setDriverDAO(DriverDAO driverDAO) {
+    this.driverDAO = driverDAO;
+  }
 
-      public OrderDAO getOrderDAO() {
-        return orderDAO;
-      }
+  public MapDAO getMapDAO() {
+    return mapDAO;
+  }
 
-      public void setOrderDAO(OrderDAO orderDAO) {
-        this.orderDAO = orderDAO;
-      }
+  public void setMapDAO(MapDAO mapDAO) {
+    this.mapDAO = mapDAO;
+  }
 
-      public CarDAO getCarDAO() {
-        return carDAO;
-      }
+  public OrderDAO getOrderDAO() {
+    return orderDAO;
+  }
 
-      public void setCarDAO(CarDAO carDAO) {
-        this.carDAO = carDAO;
-      }
+  public void setOrderDAO(OrderDAO orderDAO) {
+    this.orderDAO = orderDAO;
+  }
+
+  public CarDAO getCarDAO() {
+    return carDAO;
+  }
+
+  public void setCarDAO(CarDAO carDAO) {
+    this.carDAO = carDAO;
+  }
 }

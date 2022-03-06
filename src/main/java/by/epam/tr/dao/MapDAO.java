@@ -1,30 +1,34 @@
 package by.epam.tr.dao;
 
 import java.util.Map;
-import by.epam.tr.beans.NavigationMap;
 
 /**
- * Интерфейс слоя DAO для bean
- * @see NavigationMap
+ * DAO layer interface for bean * @see NavigationMap
  */
 public interface MapDAO {
-  /**
-   * Возвращает все улицы города и расстояние до центра
-   */
-  public Map<String, Double> getStreets();
 
   /**
-   * Возвращает boolean - значение нахождения улицы в списке по названию
+   * Reading a data source with city streets
    */
-    public boolean checkLocation(String street);
+  public Map<String, Double> readSource() throws DAOException;
 
   /**
-   * Возвращает случайное название улицы города
+   * Adding a street to the list of city streets
    */
-    public String getRandomLocation();
+  public void addStreet(String street) throws DAOException;
 
   /**
-   * Возвращает дистанцию улицы города от центра
+   * Returns boolean - the value of finding a street in the list by name
    */
-    public double getLocationDistance(String street);
+  public boolean checkLocation(String street) throws DAOException;
+
+  /**
+   * Returns a random city street name
+   */
+  public String getRandomLocation() throws DAOException;
+
+  /**
+   * Returns the distance of a city street from the center
+   */
+  public double getLocationDistance(String street) throws DAOException;
 }

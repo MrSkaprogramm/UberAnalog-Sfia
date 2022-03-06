@@ -1,24 +1,21 @@
 package by.epam.tr.dao;
 
+import java.util.List;
 import by.epam.tr.beans.Order;
+import by.epam.tr.service.ServiceException;
 
 /**
- * Интерфейс слоя DAO для bean
- * @see Order
+ * DAO layer interface for bean * @see Order
  */
 public interface OrderDAO {
   /**
-   * Добавляет заказ в список заказов
+   * Adds a new order to the data source
    */
-  public boolean addOrder(Order order);
+  public boolean addOrder(Order order) throws DAOException;
 
   /**
-   * Возвращает заказ по номеру из списка заказов
+   * Reading the data source, saving it to the list of completed orders and passing it to the
+   * Service layer
    */
-  public Order getOrder(int orderNum);
-
-  /**
-   * Возвращает количество заказов в списке
-   */
-  public int getNumOfOrders();
+  public List<Order> showOrdersHistory() throws ServiceException;
 }
