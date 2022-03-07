@@ -1,0 +1,11 @@
+by.epam.tr
+by.epam.tr.beans
+by.epam.tr.controller
+by.epam.tr.controller.impl
+by.epam.tr.dao
+by.epam.tr.dao.impl
+by.epam.tr.datasource
+by.epam.tr.service
+by.epam.tr.service.impl
+by.epam.tr.utils
+by.epam.tr.view
